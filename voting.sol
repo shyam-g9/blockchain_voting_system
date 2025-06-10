@@ -48,6 +48,7 @@ contract Voting {
         votingEnded = true;
     }
 
+
     function vote(uint candidateIndex) public votingActive {
         require(!voters[msg.sender].hasVoted, "You have already voted.");
         require(candidateIndex < candidates.length, "Invalid candidate index.");
@@ -59,6 +60,7 @@ contract Voting {
     function getCandidates() public view returns (Candidate[] memory) {
         return candidates;
     }
+
 
     function getWinner() public view returns (string memory winnerName, uint winnerVoteCount) {
         require(votingEnded, "Voting has not ended yet.");
